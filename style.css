@@ -1,0 +1,243 @@
+/* You can add custom CSS and extend Boostrap styles in this file. Remember, Bootstrap is just CSS at the end of the day! */
+
+body {
+  position: relative;
+}
+
+#hero-section {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    url("img/carl-raw-m3hn2Kn5Bns-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 20%;
+  padding-top: 40vh;
+  padding-bottom: 40vh;
+  font-family: 'Press Start 2P', sans-serif;
+
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 5px rgb(80, 0, 0);
+  background-attachment: fixed;
+
+}
+
+
+#headshot-img {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  border: 10px solid rgba(255, 255, 255, .2);
+}
+
+
+
+#name {
+  color: #6dcdfd;
+}
+
+#phrase {
+  font-size: 16px;
+  font-style: italic;
+  color: #b4e1f8;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+#footer-section {
+  height: 75px;
+  width: 100vw;
+  background-color: black;
+  color: #ccf3f5;
+  text-align: center;
+
+}
+
+#footer-text {
+  padding: 25px;
+  font-size: 16px;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+#mission-title {
+  color: #6dcdfd;
+  text-align: center;
+  padding: 5% 0;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+section#mission-section {
+  background-color: #25223a;
+  color: #ccf3f5;
+  width: 100vw;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+#img-mission {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 30px;
+}
+
+.mission-paragraph {
+  padding: 0vh 2vh;
+  text-shadow: 2px 2px 5px rgb(128, 0, 0);
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+#mission-paragraph-p {
+  background-color: black;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+#img-skill {
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+.skill-html {
+  padding: 0 5%;
+}
+
+section#skills-section {
+  /*
+  background-color: #4CAF50;
+color: #333333;
+  */
+
+  background-color: #2b809c;
+  color: #404040;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+  width: 100vw;
+
+}
+
+#skills-title {
+  color: #FFFFFF;
+  text-align: center;
+  padding: 5% 0 3% 0;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+#html-text {
+  text-align: center;
+  background-color: #3090b0;
+  border-radius: 30px;
+  padding: 10px;
+  font-weight: 400;
+}
+
+
+section#contact-section {
+  /*
+  background-color: #FF5722;
+  */
+  background-color: #25223a;
+
+  color: #ccf3f5;
+  width: 100vw;
+}
+
+#img-contact {
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+#img-contact:hover {
+  filter: opacity(0.7) drop-shadow(0 0 brown);
+}
+
+#contact-title {
+
+  color: #6dcdfd;
+
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+  text-align: center;
+  padding: 5% 0;
+}
+
+#projects-title {
+  text-align: center;
+  padding: 5% 0 3% 0;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}
+
+section#projects-section {
+  /*
+    background-color: #4CAF50;
+color: #FFFFFF ;
+  */
+  background-color: #2b809c;
+  color: #ccf3f5;
+
+  width: 100vw;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  object-position: center;
+  height: 75vh;
+  overflow: hidden;
+}
+
+.carousel-item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.carousel-caption {
+  z-index: 1;
+  /* font-family: "Roboto", "Helvetica", sans-serif; */
+  font-family: 'Press Start 2P', sans-serif;
+
+}

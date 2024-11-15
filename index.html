@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="milestone" content="Portfolio">
+  <!-- TODO: Replace this with your title -->
+  <title>Pranav's Website</title>
+  <!-- 
+			TODO: Add Bootstrap CSS link tag from: 
+      https://getbootstrap.com/docs/5.2/getting-started/introduction/
+		-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+			TODO: Add Bootstrap Icons link tag from: 
+			https://icons.getbootstrap.com/
+			(Remember, the CDN link is towards the bottom of the page!)
+		-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Custom styles (these can extend the default Bootstrap styles) -->
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="scroll-top" data-bs-spy="scroll" data-bs-target=".navbar">
+  <!-- TODO: Paste Navbar code and customize links -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#hero-section">
+        <i class="bi bi-house-door"></i>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-collapse"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav-collapse">
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="#mission-section">Mission</a>
+          <a class="nav-link" href="#projects-section">Projects</a>
+          <a class="nav-link" href="#skills-section">Skills</a>
+          <a class="nav-link" href="#contact-section">Contact</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  </section>
+  <!-- Hero section -->
+  <section id="hero-section">
+    <div id="img-and-text-hero">
+      <img id="headshot-img" src="img/Screenshot 2023-06-25 225423.png" alt="Image of Pranav">
+      <h1 id="name">
+        Pranav Mehra
+      </h1>
+      <h4 id="phrase">
+        Bringing the games to you
+      </h4>
+    </div>
+
+  </section>
+
+  <!-- Mission/Meet-me section -->
+  <section id="mission-section">
+    <div class="container-fluid container-md">
+      <h2 id="mission-title">My Mission</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <img id="img-mission" src="img/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="smash wallpaper">
+        </div>
+        <div class="col-md-6 mission-paragraph">
+          <p id="mission-paragraph-p">
+            My mission is to develop video games in a truly unique and captivating way, while placing a strong
+            emphasis
+            on mobile video game apps. As a gamer myself, I understand what makes a game fun and addicting. I am
+            dedicated to creating innovative games that do just that. By pushing the
+            limits of creativity and technology, I aim to provide players with a truly unforgettable time through
+            enjoyable game mechanics and engaging gameplay. With a keen focus on mobile platforms, I
+            strive to bring these extraordinary experiences to the fingertips of gamers around the world, enabling
+            them
+            to delve into immersive worlds anytime, anywhere. From casual playing-card games that provide quick
+            moments
+            of joy
+            to epic rogue-like adventures that transport players to entirely new realms, I am committed to crafting
+            games that entertain, challenge, and bring people together. Join me on this exhilarating journey as we
+            redefine the way video games are experienced on mobile devices and create memories that will last a
+            lifetime.
+          </p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- Projects section -->
+  <section id="projects-section">
+    <h2 id="projects-title">Projects</h2>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-slide="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+          aria-label="Slide 5"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/risk.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-md-block">
+            <h5>Risk</h5>
+            <p>A playing-card game similar to Blackjack.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/squared.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-md-block">
+            <h5>Squared</h5>
+            <p>Played on a 5x5 grid, it is a game that drew inspiration from Tic-Tac-Toe.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/employee216.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-md-block">
+            <h5>Employee 216</h5>
+            <p>A triller short film created as the final project for Automata Theory.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/solitaire.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-md-block">
+            <h5>Solitaire</h5>
+            <p>A simple fully functioning solitaire game with the ability to reset the board.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/space.png" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-md-block">
+            <h5>Space Shooter</h5>
+            <p>A space shooter that aims to be similar to Galaga but with modern graphics and a twist.</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+
+  <!-- Skills section -->
+  <section id="skills-section">
+    <div class="container">
+      <h2 id="skills-title">Skills</h2>
+
+      <div class="row">
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/HTML5_logo_and_wordmark.svg.png" alt="html5 logo">
+          <p id="html-text"> HTML (Hypertext Markup Language) is a standard markup language used for creating and
+            structuring the content of web pages.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/Unity-Icon-Square.png" alt="Unity logo">
+          <p id="html-text">Unity is a powerful game development engine that allows developers to create
+            interactive experiences across various platforms.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/asm-200.png" alt="ASM logo">
+          <p id="html-text"> ASM (Assembly Language) is a low-level programming language that directly communicates
+            with
+            the computer's hardware.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/java-icon-paper.png" alt="Java logo">
+          <p id="html-text"> Java is an object-oriented programming language known for its platform
+            independence, robustness, and wide range of applications.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/c_original_logo_icon_146611.png" alt="C logo">
+          <p id="html-text"> C is an efficient programming language that provides low-level control, high performance,
+            and is used for system programming and embedded systems.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/css-icon.png" alt="CSS logo">
+          <p id="html-text">CSS (Cascading Style Sheets) is a styling language used to enhance the appearance and
+            layout
+            of web pages and enabling developers to customize elements.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/c++icon.png" alt="C++ logo">
+          <p id="html-text"> C++ is a versatile programming language that combines the features of C with additional
+            functionalities such as object-oriented programming.</p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/03-06-01-riscv-hero.svg" alt="Risc-V logo">
+          <p id="html-text"> RISC-V is an open-source instruction set architecture (ISA) that is designed to be
+            simple,
+            modular, and extensible.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/c-sharp-c-icon-1822x2048-wuf3ijab.png" alt="C# logo">
+          <p id="html-text"> C# (C-Sharp) is a modern object-oriented programming language developed by
+            Microsoft, widely used for building video games, web, and mobile, with a
+            focus on simplicity.
+          </p>
+        </div>
+        <div class="skill-html col-sm-12 col-md-6 col-lg-3">
+          <img id="img-skill" src="img/bootstrap-icon.png" alt="Bootstrap logo">
+          <p id="html-text">Bootstrap is a popular open-source front-end framework that provides a collection of
+            pre-designed templates, CSS styles, and JavaScript components.
+          </p>
+        </div>
+      </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact-section">
+    <div class="container">
+      <h2 id="contact-title">Contact</h2>
+
+      <div class="row">
+        <div class="skill-html col-sm-12 col-md-4">
+          <a href=" https://www.linkedin.com/in/pranav-mehra-awekingsum/"><img id="img-contact"
+              src="img/linkedin-icon.png" alt="LinkedIn logo"></a>
+        </div>
+        <div class="skill-html col-sm-12 col-md-4">
+          <a href="https://github.com/AweKingSome"><img id="img-contact" src="img/github-icon.png"
+              alt="Github logo"></a>
+        </div>
+        <div class="skill-html col-sm-12 col-md-4">
+          <a href="mailto:pranavmehra6@egmail.com"><img id="img-contact" src="img/email-icon.png" alt="Email logo"></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer section -->
+  <section id="footer-section">
+    <h5 id="footer-text">© Pranav Mehra 2023</h5>
+  </section>
+
+  <!-- 
+  		TODO: Paste Bootstrap JavaScript script tag from:
+  		https://getbootstrap.com/docs/5.2/getting-started/introduction/
+  	-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
