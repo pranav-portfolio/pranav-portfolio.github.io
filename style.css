@@ -4,49 +4,380 @@ body {
   position: relative;
 }
 
-#hero-section {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-    url("img/carl-raw-m3hn2Kn5Bns-unsplash.jpg");
-  background-size: cover;
-  background-position: center;
-  width: 100vw;
-  height: 100vh;
-  padding: 20%;
-  padding-top: 40vh;
-  padding-bottom: 40vh;
+
+
+#container-foreground-hs-img {
+  position: relative;
+  overflow: hidden;
+  height: fit-content;  
+  padding-top: 100px;
+}
+
+.image-container{
+  bottom: 400px;
+  right: 10%;
+  max-width: 444px;
+  height: auto;
+  position: absolute;
+}
+
+
+/* Foreground image */
+#foreground-headshot-img {
+  max-width: 100%; /* Ensures the image scales with the container */
+
+  top: 150px;
+}
+
+
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #00FF00;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+/* Name styling */
+#name {
+  color: #00FF00;
+  margin-left: 124px;
+  margin-top: 20px;
+  padding: 10px;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.h1 {
+  font-weight: bold;
+}
+#phrase {
+  
+  font-size: 15px;
+  font-style: italic;
+  margin-left: 95px;
+  margin-top: 0;
+  color: #00FF00;
   font-family: 'Press Start 2P', sans-serif;
 
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 5px rgb(80, 0, 0);
-  background-attachment: fixed;
+}
+
+.nav-link{
+  padding-left: 20px;
+  color: #00FF00;
+  font-family: 'Press Start 2P', sans-serif;
 
 }
 
-
-#headshot-img {
-  border-radius: 100%;
-  width: 150px;
-  height: 150px;
-  border: 10px solid rgba(255, 255, 255, .2);
+/* Change color to white on hover */
+.nav-link:hover {
+  color: #fff; /* White color on hover */
 }
 
-
-
-#name {
-  color: #6dcdfd;
+.nav-link:active {
+  color: #fff; /* White color on hover */
 }
 
-#phrase {
+#infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+  right: calc(30vmax + 10% - 80px);
+  width: fit-content;
+}
+
+.infoBox { 
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0 20px auto;
+    padding: 16px 16px 0;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+.infoBoxText {
+  margin-left: 10px;
+}
+
+#bio-container {
   font-size: 16px;
   font-style: italic;
-  color: #b4e1f8;
+  border-radius: 20px;
+  color: #00FF00;
+  padding: 20px;
+  margin: 40px 20px 20px 100px;
+  width: 60ch;
+  line-height: 2;
+  /* Ensure it appears above other elements */
+  background-color: rgba(0, 0, 0, 0.5);
+
   /* font-family: "Roboto", "Helvetica", sans-serif; */
   font-family: 'Press Start 2P', sans-serif;
+}
+
+#bio-text{
+  display: inline-block; /* Ensure the width of the text is treated as a block */
+  white-space: wrap; /* Prevent the text from wrapping */
+}
+
+
+#bio-text::after {
+  content: '|';
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+#spacer-one{
+  height: 8vmax;
+  max-height: 15px;
+  width: 100%;
+}
+@media (min-width: 400px) {
+  #bio-container {
+    height: 800px;
+  }
+}
+@media (min-width: 450px) {
+  #bio-container {
+    height: 600px;
+  }
+}
+@media (min-width: 650px) {
+  #bio-container {
+    height: 480px;
+  }
+}
+@media (min-width: 1500px) {
+  #bio-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 1500px) {
+  #bio-container {
+    margin: 40px 20px 20px 10px;
+    width: 40ch;
+
+  }
 
 }
+/*New*/
+@media (max-width: 1500px) {
+  #container-foreground-hs-img {
+    height: fit-content;  
+  }
+  #name {
+    position: relative;
+    top: auto;
+    /* Remove any absolute positioning */
+    right: auto;
+    /* Reset horizontal alignment */
+    transform: none;
+    /* Remove translation */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-left: 34px;
+    margin-bottom: 1rem;
+    /* Add space between name and image */
+  }
+
+  #phrase {
+    position: relative;
+    top: auto;
+    /* Remove any absolute positioning */
+    right: auto;
+    /* Reset horizontal alignment */
+    transform: none;
+    /* Remove translation */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-bottom: 1rem;
+    /* Adjust phrase size */
+  }
+
+  #bio-container {
+    max-width: 100%;
+    position: relative;
+    border-radius: 10px;
+    top: auto;
+    /* Remove any absolute positioning */
+    right: auto;
+    /* Reset horizontal alignment */
+    transform: none;
+    /* Remove translation */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-bottom: 20px;
+    /* Adjust phrase size */
+  }
+
+}
+
+
+
+@media screen and (max-width: 950px) {
+  #spacer-one {
+      height: 400px;
+      max-height: 400px;
+  }
+  .image-container{
+    bottom: 0px;
+  }
+  
+  
+}
+@media screen and (min-width: 950px) {
+  .marquee-text-track-one {
+    padding-top: 200px;
+  }
+
+}
+
+@media screen and (max-width: 1175px) {
+  .image-container {
+      width: 350px;
+  }
+}
+
+
+@media screen and (max-width: 975px) {
+  .image-container {
+      width: 250px;
+  }
+}
+
+/*Marquee*/
+.marquee-text {
+  overflow: clip;
+  color: #00FF00;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.marquee-text-track-one {
+  
+  display: flex;
+  padding-left: 4.8rem;
+  gap: 4.8rem;
+  width: max-content;
+  animation: marquee-move-text var(--speed, 20s) linear infinite var(
+      --direction,
+      forwards
+    );
+}
+
+.marquee-text-track-two {
+  display: flex;
+  padding-left: 4.8rem;
+  gap: 4.8rem;
+  width: max-content;
+  animation: marquee-move-text var(--speed, 30s) linear infinite var(
+      --direction,
+      reverse 
+    );
+}
+
+
+@keyframes marquee-move-text {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+.fadeout-horizontal {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5rem,
+    black calc(100% - 5rem),
+    transparent
+  );
+}
+
+
+/* This is the added code */
+
+.fadeout-horizontal {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5rem,
+    black calc(100% - 5rem),
+    transparent
+  );
+}
+
+.center-content {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  padding: 4.8rem 0px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-size: 4rem;
+}
+
+.rotate-left {
+  transform: rotate(-25deg);
+}
+
+.rotate-right {
+  transform: rotate(17deg);
+}
+
+.marquee-text {
+  overflow: clip;
+}
+
+.marquee-text-track {
+  display: flex;
+  padding-left: 4.8rem;
+  gap: 4.8rem;
+  width: max-content;
+  animation: marquee-move-text var(--speed, 10s) linear infinite
+    var(--direction, forwards);
+}
+
+.marquee-text p {
+  border: 1px solid #00FF00;
+  background-color: #141414;
+  border-radius: 999px;
+  padding: 1rem 2.5rem;
+  font-size: 16px;
+}
+
+.reverse{
+  animation: marquee-move-text var(--speed, 30s) linear infinite var(
+    --direction,
+    reverse 
+  );
+
+}
+@keyframes marquee-move-text {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Marqee Code ends here */
 
 #footer-section {
   height: 75px;
@@ -65,45 +396,6 @@ body {
 
 }
 
-#mission-title {
-  color: #6dcdfd;
-  text-align: center;
-  padding: 5% 0;
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
-  font-family: 'Press Start 2P', sans-serif;
-
-}
-
-section#mission-section {
-  background-color: #25223a;
-  color: #ccf3f5;
-  width: 100vw;
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
-  font-family: 'Press Start 2P', sans-serif;
-
-}
-
-#img-mission {
-  height: 400px;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 30px;
-}
-
-.mission-paragraph {
-  padding: 0vh 2vh;
-  text-shadow: 2px 2px 5px rgb(128, 0, 0);
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
-  font-family: 'Press Start 2P', sans-serif;
-
-}
-
-#mission-paragraph-p {
-  background-color: black;
-  border-radius: 30px;
-  padding: 10px;
-}
 
 #img-skill {
   height: 100px;
@@ -113,28 +405,35 @@ section#mission-section {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
+  background-color: #00FF00;
+  border-radius: 20px;
+  opacity: 0.75;
+  padding: 10px;
+  transition: filter 0.3s ease; /* Add transition for smooth effect */
 }
+
+#img-skill:hover {
+  background-color: white; 
+  filter: brightness(1.2);
+}
+
 
 .skill-html {
   padding: 0 5%;
+  padding-bottom: 50px;
 }
 
 section#skills-section {
-  /*
-  background-color: #4CAF50;
-color: #333333;
-  */
 
-  background-color: #2b809c;
-  color: #404040;
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
+
+  color: #00FF00;
   font-family: 'Press Start 2P', sans-serif;
-  width: 100vw;
+  width: 100%;
 
 }
 
 #skills-title {
-  color: #FFFFFF;
+  color: #00FF00;
   text-align: center;
   padding: 5% 0 3% 0;
   /* font-family: "Roboto", "Helvetica", sans-serif; */
@@ -144,10 +443,12 @@ color: #333333;
 
 #html-text {
   text-align: center;
-  background-color: #3090b0;
+  background-color: black;
+
   border-radius: 30px;
   padding: 10px;
   font-weight: 400;
+  opacity: 0.85;
 }
 
 
@@ -155,10 +456,10 @@ section#contact-section {
   /*
   background-color: #FF5722;
   */
-  background-color: #25223a;
+  background-color: #000;
 
-  color: #ccf3f5;
-  width: 100vw;
+  color: #00FF00;
+  width: 100%;
 }
 
 #img-contact {
@@ -169,6 +470,9 @@ section#contact-section {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
+  padding: 10px;
+  background-color: #00FF00;
+  border-radius: 20px;
 }
 
 .overlay {
@@ -185,12 +489,15 @@ section#contact-section {
 }
 
 #img-contact:hover {
-  filter: opacity(0.7) drop-shadow(0 0 brown);
+  /* filter: opacity(0.7) drop-shadow(0 0 brown); */
+  background-color: white; 
+  filter: brightness(1.2);
+
 }
 
 #contact-title {
 
-  color: #6dcdfd;
+  color: #00FF00;
 
   /* font-family: "Roboto", "Helvetica", sans-serif; */
   font-family: 'Press Start 2P', sans-serif;
@@ -199,29 +506,37 @@ section#contact-section {
   padding: 5% 0;
 }
 
-#projects-title {
-  text-align: center;
-  padding: 5% 0 3% 0;
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
-  font-family: 'Press Start 2P', sans-serif;
-
-}
 
 section#projects-section {
-  /*
+  
     background-color: #4CAF50;
 color: #FFFFFF ;
-  */
-  background-color: #2b809c;
-  color: #ccf3f5;
+ 
+  /* background-color: #2b809c;
+  color: #ccf3f5; */
 
-  width: 100vw;
+  width: 100%;
+}
+
+#carouselExampleCaptions {
+  height: 75%; /* Set carousel height to 75% of the viewport height */
+}
+
+.carousel-item video {
+  object-fit: cover;
+  object-position: center;
+  height: 100vh;
+  width: 100vw; /* Stretch the image to fill the width */
+
+  overflow: hidden;
 }
 
 .carousel-item img {
   object-fit: cover;
   object-position: center;
-  height: 75vh;
+  height: 100vh;
+  width: 100vw; /* Stretch the image to fill the width */
+
   overflow: hidden;
 }
 
@@ -232,12 +547,215 @@ color: #FFFFFF ;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.3);
+  height: 75%;
+
 }
 
 .carousel-caption {
   z-index: 1;
-  /* font-family: "Roboto", "Helvetica", sans-serif; */
   font-family: 'Press Start 2P', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+  border-radius: 20px; /* Rounded corners */
 
+}
+
+#in-dev-cap{
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  font-family: 'Press Start 2P', sans-serif;
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+  border-radius: 20px; /* Rounded corners */
+  width: 200px;
+  font-size: 12px;
+  right: 100px;
+  bottom:-15px;
+}
+
+@media screen and (max-width: 950px) {
+  #in-dev-cap{
+    right: 0px;
+
+  }
+}
+
+.carousel-title{
+  position: absolute;
+  z-index: 1;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 50px;
+  top: 50px;
+
+  /* Background styling with transparency */
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with 70% opacity */
+  color: #fff; /* Text color for contrast */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Space inside the background box */
+
+  /* Center and limit width */
+  left: 50%;
+  transform: translateX(-50%); /* Centers element horizontally */
+  display: inline-block; /* Shrinks to fit the content */
+  
+    /* Center-align text */
+    text-align: center;
+
+}
+
+/*spaceship code*/
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+}
+
+#content {
+  height: 200vh;
+  /* Make the page long enough to scroll */
+  position: relative;
+}
+
+#game-area {
+  width: 100%;
+  height: 100vh;
+  /* Full viewport height */
+  position: fixed;
+  /* Fix the spaceship to the background */
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* Make sure it's behind the content */
+  background: radial-gradient(circle at center, #111 60%, black 100%);
+  overflow: hidden;
+}
+
+#spaceship {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  background: linear-gradient(to top, #00FF00, #98fb98);
+  clip-path: polygon(50% 0%, 75% 75%, 50% 65%, 25% 75%);
+  box-shadow: 0 0 10px white;
+}
+
+#spaceship:before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: orange;
+  box-shadow: 0 0 15px yellow, 0 0 30px red;
+}
+
+.laser {
+  position: absolute;
+  width: 5px;
+  height: 20px;
+  background: red;
+  box-shadow: 0 0 10px red;
+  animation: laserMove 1s infinite linear;
+}
+
+@keyframes laserMove {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+}
+
+#other-content {
+  position: relative;
+  z-index: 1;
+  /* Keep content on top of the spaceship */
+  height: 100vh;
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Asteroid styles */
+.asteroid {
+  position: absolute;
+  width: 40px;
+  /* Adjust size as needed */
+  height: 40px;
+  background-color: #008000;
+  border-radius: 50%;
+  /* Make it circular */
+  z-index: 5;
+}
+
+/* Invincibility effect */
+#spaceship.invincible {
+  opacity: 0.5;
+  /* Make the spaceship semi-transparent */
+  animation: blink 0.5s infinite;
+  /* Blinking effect */
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Explosion effect */
+.explosion {
+  position: absolute;
+  width: 50px;
+  /* Adjust size as needed */
+  height: 50px;
+  background: radial-gradient(circle, orange, red, black);
+  border-radius: 50%;
+  animation: explode 1s ease-out;
+  z-index: 20;
+  /* Ensure explosion appears above other elements */
+}
+
+/* Explosion animation */
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(3);
+    /* Grow the explosion */
+    opacity: 0;
+    /* Fade out */
+  }
+}
+
+#timer-container {
+  color: #00FF00;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+
+
+.custom-navbar {
+  background-color: black;
+  /* background-color: #343a40; */
 }
