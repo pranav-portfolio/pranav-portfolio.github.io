@@ -5,7 +5,7 @@ const timerElement = document.getElementById('timer');
 
 let positionX = window.innerWidth / 2;
 let positionY = window.innerHeight / 2;
-const speed = 0.2; // Movement speed
+const speed = 1; // Movement speed
 let isInvincible = false; // Tracks if the spaceship is invincible after respawn
 let spawnRate = 500; // Initial asteroid spawn rate (in ms)
 let spawnRateDecrement = 50; // How much to decrease the spawn rate each iteration
@@ -109,6 +109,7 @@ function checkCollision(asteroid, interval) {
     handleCollision(asteroid, interval);
   }
 }
+
 
 // Handle collision
 function handleCollision(asteroid, interval) {
