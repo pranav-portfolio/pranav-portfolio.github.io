@@ -16,15 +16,15 @@ let gameTimer; // Tracks time since start/reset
 //Update the Minimum spawn rate of astroids according to screen size
 function updateMinSpawnRate() {
   if (window.innerWidth <= 600) {
-    minSpawnRate = 300; 
+    minSpawnRate = 350; 
   } 
   else if (window.innerWidth <= 800) {
-    minSpawnRate = 200; 
+    minSpawnRate = 250; 
   } 
   else if (window.innerWidth <= 1200) {
-    minSpawnRate = 150; 
+    minSpawnRate = 200; 
   } else {
-    minSpawnRate = 50; // Revert back to 60 for larger screens
+    minSpawnRate = 50;
   }
 }
 
@@ -80,7 +80,7 @@ function createAsteroid() {
   asteroid.style.top = `-50px`;
   gameArea.appendChild(asteroid);
 
-  const asteroidSpeed = Math.random() * 3 + 2; // Random speed
+  const asteroidSpeed = Math.random() * 25 + 10; // Random speed
   const interval = setInterval(() => {
     const top = parseFloat(asteroid.style.top);
     if (top > gameArea.offsetHeight) {
