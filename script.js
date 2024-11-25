@@ -12,20 +12,19 @@ let spawnRateDecrement = 50; // How much to decrease the spawn rate each iterati
 let minSpawnRate = 50; // Minimum spawn rate
 let gameInterval; // Interval for spawning asteroids
 let gameTimer; // Tracks time since start/reset
-let asteroidSpeed = Math.random() * 25 + 10; // Random speed
 
 //Update the Minimum spawn rate of astroids according to screen size
 function updateMinSpawnRate() {
   if (window.innerWidth <= 600) {
-    minSpawnRate = 350; 
+    minSpawnRate = 300; 
   } 
   else if (window.innerWidth <= 800) {
-    minSpawnRate = 250; 
+    minSpawnRate = 200; 
   } 
   else if (window.innerWidth <= 1200) {
-    minSpawnRate = 200; 
+    minSpawnRate = 150; 
   } else {
-    minSpawnRate = 50;
+    minSpawnRate = 50; // Revert back to 60 for larger screens
   }
 }
 
@@ -34,27 +33,6 @@ updateMinSpawnRate();
 
 // Add a listener to detect screen size changes
 window.addEventListener('resize', updateMinSpawnRate);
-
-//asteroid speed change based off height of the screen
-function updateAsteroidSpeed(){
-  if (window.innerHeight <= 500) {
-    asteroidSpeed = Math.random() * 10 + 5; 
-  } 
-  else if (window.innerHeight <= 600) {
-    asteroidSpeed = Math.random() * 15 + 8; 
-  } 
-  else if (window.innerHeight <= 800) {
-    asteroidSpeed = Math.random() * 20 + 9; 
-  } else {
-    asteroidSpeed = Math.random() * 25 + 10;
-  }
-}
-
-// Initial check
-updateMinSpawnRate();
-
-// Add a listener to detect screen size changes
-window.addEventListener('resize', updateAsteroidSpeed);
 
 
 // Time tracking variables
@@ -94,10 +72,6 @@ document.addEventListener('touchmove', (event) => {
   }
 });
 
-
-
-
-
 // Function to create an asteroid
 function createAsteroid() {
   const asteroid = document.createElement('div');
@@ -105,7 +79,24 @@ function createAsteroid() {
   asteroid.style.left = `${Math.random() * gameArea.offsetWidth}px`;
   asteroid.style.top = `-50px`;
   gameArea.appendChild(asteroid);
- 
+
+  // updateAsteroidSpeed();
+  let  asteroidSpeed = Math.random() * 25 + 10; // Random speed
+
+  if (window.innerHeight <= 400) {
+    asteroidSpeed = Math.random() * 5 + 3;
+  } 
+  else if (window.innerHeight <= 600) {
+    asteroidSpeed = Math.random() * 8 + 4; 
+  } 
+  else if (window.innerHeight <= 800) {
+    asteroidSpeed = Math.random() * 12 + 7; 
+  } else {
+    asteroidSpeed = Math.random() * 25 + 10; // Revert back to 60 for larger screens
+  }
+  // Add a listener to detect screen size changes
+  // window.addEventListener('resize');
+
 
   const interval = setInterval(() => {
     const top = parseFloat(asteroid.style.top);
