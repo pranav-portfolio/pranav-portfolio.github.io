@@ -270,3 +270,64 @@ document.addEventListener('DOMContentLoaded', () => {
   updatePosition();
   startGame();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const riskCaption = document.querySelector("#risk-caption .caption-text");
+  const squaredCaption = document.querySelector("#squared-caption .caption-text");
+  const employee216Caption = document.querySelector("#employee-216-caption .caption-text");
+  const solitaireCaption = document.querySelector("#solitaire-caption .caption-text");
+  const spaceshooterCaption = document.querySelector("#space-shooter-caption .caption-text");
+
+  const updateCaptionText = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 735) {
+      riskCaption.textContent = "Calculated gambles and bold decisions—can you take the Risk?";
+    } else if (screenWidth <= 1200) {
+      riskCaption.textContent = "A thrilling card game of gambles and strategy. Each turn, pick the right card, hit or stand, and balance nerve with tactics. Will you take the Risk?";
+    } else {
+      riskCaption.textContent =
+        "The ultimate playing card game of calculated gambles and bold decisions. Players face a thrilling dilemma each turn: select the right card and decide whether to hit or stand, balancing strategy and nerve in a game where every move could lead to triumph or disaster. Are you ready to take the Risk?";
+    }
+    if (screenWidth <= 970) {
+      squaredCaption.textContent = "Squared reimagines Tic-Tac-Toe on a 5x5 grid. Race to form the ultimate square with strategy and quick thinking!";
+    } else if (screenWidth <= 1390) {
+      squaredCaption.textContent = "Rethink Tic-Tac-Toe on a 5x5 grid! Squared challenges players to drop X's and O's, racing to form the ultimate square. Quick thinking and strategy are key in this electrifying twist on a classic game.";
+    } else {
+      squaredCaption.textContent =
+      "Get ready to rethink Tic-Tac-Toe! Played on a vibrant 5x5 grid, Squared challenges players to drop X's and O's in a thrilling race to form the ultimate square. With each turn, the stakes rise, demanding quick thinking, sharp strategy, and a dash of cunning. Get ready for an electrifying twist on a beloved classic—victory has never been this satisfying!";
+    }
+
+    if (screenWidth <= 970) {
+      employee216Caption.textContent = "In this thrilling short film, Employee 216’s normal day turns into a spine-chilling mystery, with tension rising at every click!";
+    } else if (screenWidth <= 1390) {
+      employee216Caption.textContent =  "Brace yourself for a spine-tingling short film! Employee 216, absorbed in their office work, begins noticing strange occurrences. What starts as a normal day spirals into a mind-bending mystery, with tension building at every click.";
+    } else {
+      employee216Caption.textContent = "Brace yourself for a spine-tingling ride in this thrilling short film! Watch as Employee 216, completely absorbed in their office assignment, suddenly begins to notice strange and unnerving occurrences around the office. What starts as a routine day quickly spirals into a mind-bending mystery, and the tension keeps building with every click of the mouse.";
+    }
+
+    if (screenWidth <= 970) {
+      solitaireCaption.textContent = "Modern Solitaire—relax, reset, and shuffle your way to victory!";
+    } else if (screenWidth <= 1390) {
+      solitaireCaption.textContent =  "Solitaire with a modern twist! Enjoy smooth gameplay, reset the board anytime, and challenge yourself with every shuffle.";
+    } else {
+      solitaireCaption.textContent = "A fresh twist on the classic card game! Experience the timeless challenge of Solitaire with a sleek, modern design and smooth gameplay. Whether you're relaxing or testing your skills, this fully functioning version lets you reset the board and dive right back into the action. Simple yet addictive, it's the perfect way to unwind, and every shuffle brings a new opportunity to strategize and win!";
+    }
+
+    if (screenWidth <= 870) {
+      spaceshooterCaption.textContent = "Space shooter action—dodge, upgrade, and save the galaxy!";
+    } else if (screenWidth <= 1470) {
+      spaceshooterCaption.textContent =  "Embark on a thrilling space adventure with a modern twist on the classic Galaga! Face waves of enemies, dodge attacks, and unleash powerful upgrades to save the galaxy.";
+    } else {
+      spaceshooterCaption.textContent = "Blast off into an exhilarating space adventure! Inspired by the classic Galaga, this space shooter brings a fresh, modern twist with stunning graphics and intense action. Face waves of enemies, dodge relentless attacks, and unleash powerful upgrades as you race to save the galaxy. Every level escalates the excitement, challenging your reflexes and strategy—are you ready to take on the challenge and become the ultimate space hero?";
+    }
+
+  };
+
+  // Update caption text on page load and window resize
+  updateCaptionText();
+  window.addEventListener("resize", updateCaptionText);
+});
+
+
+
