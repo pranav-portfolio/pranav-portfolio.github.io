@@ -259,16 +259,30 @@ body {
 
 }
 
-@media screen and (max-width: 1175px) {
+@media screen and (max-width: 1075px) {
   .image-container {
       width: 350px;
+      /* bottom: 550px; */
   }
 }
 
 
-@media screen and (max-width: 975px) {
+@media screen and (max-width: 500px) {
   .image-container {
       width: 250px;
+  }
+}
+
+
+@media screen and (max-width: 1500px) {
+  .image-container {
+      right: 5px;
+  }
+}
+
+@media screen and (max-width: 1675px) {
+  .image-container {
+      right: 3%;
   }
 }
 
