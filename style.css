@@ -274,12 +274,6 @@ body {
 }
 
 
-@media screen and (max-width: 1500px) {
-  .image-container {
-      right: 5px;
-  }
-}
-
 @media screen and (max-width: 1675px) {
   .image-container {
       right: 3%;
