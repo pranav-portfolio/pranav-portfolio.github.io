@@ -388,12 +388,6 @@ body {
     --direction,
     reverse 
   );
-
-}
-@keyframes marquee-move-text {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 
