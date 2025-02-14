@@ -362,10 +362,6 @@ body {
   transform: rotate(17deg);
 }
 
-.marquee-text {
-  overflow: clip;
-}
-
 .marquee-text-track {
   display: flex;
   padding-left: 4.8rem;
