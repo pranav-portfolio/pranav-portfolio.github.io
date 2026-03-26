@@ -262,25 +262,32 @@ body {
   font-family: "Press Start 2P", sans-serif;
 }
 
-.marquee-text-track-one {
-  display: flex;
-  padding-left: 4.8rem;
-  gap: 4.8rem;
-  width: max-content;
-  animation: marquee-move-text var(--speed, 20s) linear infinite var(--direction, forwards);
-}
-
+.marquee-text-track-one,
 .marquee-text-track-two {
   display: flex;
   padding-left: 4.8rem;
   gap: 4.8rem;
   width: max-content;
-  animation: marquee-move-text var(--speed, 30s) linear infinite var(--direction, reverse);
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation-name: marquee-move-text;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: var(--speed, 20s);
+}
+
+.marquee-text-track-two {
+  animation-duration: var(--speed, 30s);
+  animation-direction: reverse;
 }
 
 @keyframes marquee-move-text {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(calc(-1 * var(--marquee-distance, 50%)), 0, 0);
   }
 }
 
