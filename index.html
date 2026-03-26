@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WLPT91H3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F1WLPT91H3');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1WLPT91H3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-F1WLPT91H3");
+  </script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <meta name="milestone" content="Portfolio">
-  <!-- TODO: Replace this with your title -->
   <title>Pranav's Website</title>
-  <!-- 
-			TODO: Add Bootstrap CSS link tag from: 
-      https://getbootstrap.com/docs/5.2/getting-started/introduction/
-		-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous"
+  >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script&family=Press+Start+2P&display=swap"
-    rel="stylesheet">
-
-  <!-- 
-			TODO: Add Bootstrap Icons link tag from: 
-			https://icons.getbootstrap.com/
-			(Remember, the CDN link is towards the bottom of the page!)
-		-->
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-  <!-- Custom styles (these can extend the default Bootstrap styles) -->
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css">
 </head>
-
-<!-- NAVBAR -->
 
 <body class="scroll-top">
   <!-- Navbar -->
@@ -55,10 +43,18 @@
       </div>
 
       <!-- Hamburger Icon on the Right -->
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#nav-collapse"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #222222;">
+      <button
+        class="navbar-toggler ms-auto"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#nav-collapse"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        style="background-color: #222222;"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" stroke="#00FF00" stroke-width="2" viewBox="0 0 24 24" class="navbar-toggler-icon">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
@@ -66,7 +62,6 @@
     <!-- Collapsible Links -->
     <div class="collapse navbar-collapse" id="nav-collapse">
       <div class="navbar-nav ms-auto">
-        <!-- Home link inside the dropdown menu -->
         <a class="nav-link" href="#container-foreground-hs-img">Home</a>
         <a class="nav-link" href="#projects-section">Projects</a>
         <a class="nav-link" href="#skills-section">Skills</a>
@@ -74,349 +69,322 @@
       </div>
     </div>
   </nav>
-</body>
 
+  <section id="container-foreground-hs-img">
+    <!-- spaceship code begins -->
+    <div id="game-area">
+      <div id="spaceship"></div>
+    </div>
+    <script src="script.js"></script>
+    <!-- spaceship code ends -->
 
+    <h1 id="name">Pranav Mehra</h1>
 
-<section id="container-foreground-hs-img">
-  <!-- spaceship code begins -->
-  <div id="game-area">
-    <div id="spaceship"></div>
-  </div>
-  <script src="script.js"></script>
-  <!-- spaceship code ends -->
+    <h4 id="phrase">
+      Writing Bugs and Calling Them Features-Coding With a Twist
+    </h4>
 
-  <!-- Name -->
-  <h1 id="name">Pranav Mehra</h1>
+    <div id="bio-container">
+      <span id="bio-text" class="px-3 mb-4"></span>
+    </div>
 
-  <!-- Phrase -->
-  <h4 id="phrase" >
-    Writing Bugs and Calling Them Features—Coding With a Twist
-  </h4>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      function startFirstTyped() {
+        return new Typed("#bio-text", {
+          strings: [
+            "Hi and welcome to my virtual headquarters! I'm currently engaged on a project so revolutionary that it will enable users to dive headfirst into a simulated fight (yes, you heard right), with rules, drama, and results a quantifiable outcome. And if that does not get your juices flowing, don't fret-I've got a stash of past projects to blow your mind, entertain, and perhaps confound you. Drop by!"
+          ],
+          typeSpeed: 25,
+          backSpeed: 5,
+          startDelay: 10,
+          backDelay: 10000,
+          showCursor: false,
+          fadeOut: true,
+          loop: false,
+          onComplete: function() {
+            setTimeout(startSecondTyped, 10000);
+          }
+        });
+      }
 
-  <!-- Bio -->
-   <div id="bio-container">
-    <span id="bio-text" class="px-3 mb-4">
-    </span>
-   </div>
+      function startSecondTyped() {
+        return new Typed("#bio-text", {
+          strings: [
+            "Step into the ring-virtually, of course. No broken noses, just broken strategies."
+          ],
+          typeSpeed: 25,
+          backSpeed: 5,
+          startDelay: 10,
+          backDelay: 3000,
+          showCursor: false,
+          fadeOut: true,
+          loop: false,
+          onComplete: function() {
+            setTimeout(startThirdTyped, 3000);
+          }
+        });
+      }
 
-   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-   <script>
-    function startFirstTyped() {
-      return new Typed('#bio-text', {
-        strings: [
-          "Hi and welcome to my virtual headquarters! I'm currently engaged on a project so revolutionary that it will enable users to dive headfirst into a simulated fight (yes, you heard right), with rules, drama, and results a quantifiable outcome. And if that does not get your juices flowing, don't fret—I've got a stash of past projects to blow your mind, entertain, and perhaps confound you. Drop by!"
-        ],
-        typeSpeed: 25,
-        backSpeed: 5,
-        startDelay: 10,
-        backDelay: 10000, // Longer delay after the first string
-        showCursor: false,
-        fadeOut: true,
-        loop: false,
-        onComplete: function() {
-          // Respect the backDelay before starting the second Typed.js
-          setTimeout(startSecondTyped, 10000); // Matches the backDelay
-        }
-      });
-    }
-  
-    function startSecondTyped() {
-      return new Typed('#bio-text', {
-        strings: [
-         "Step into the ring—virtually, of course. No broken noses, just broken strategies."
-        ],
-        typeSpeed: 25,
-        backSpeed: 5,
-        startDelay: 10,
-        backDelay: 3000, // Shorter delay after the second string
-        showCursor: false,
-        fadeOut: true,
-        loop: false,
-        onComplete: function() {
-          // Respect the backDelay before restarting the first Typed.js
-          setTimeout(startThirdTyped, 3000); // Matches the backDelay
-        }
-      });
-    }
       function startThirdTyped() {
-      return new Typed('#bio-text', {
-        strings: [
-         "Hi and welcome to my virtual headquarters! I'm currently engaged on a project so revolutionary that it will enable users to dive headfirst into a simulated fight (yes, you heard right), with rules, drama, and results a quantifiable outcome. And if that does not get your juices flowing, don't fret—I've got a stash of past projects to blow your mind, entertain, and perhaps confound you. Drop by!"
-        ],
-        typeSpeed: 25,
-        backSpeed: 5,
-        startDelay: 10,
-        backDelay: 10000, // Shorter delay after the second string
-        showCursor: false,
-        fadeOut: true,
-        loop: false,
-        onComplete: function() {
-          // Respect the backDelay before restarting the first Typed.js
-          setTimeout(startFourthTyped, 10000); // Matches the backDelay
-        }
-      });
-    }
-      function startFourthTyped() {
-      return new Typed('#bio-text', {
-        strings: [
-          "No helmets required—just bring your curiosity and maybe a snack."
-],
-        typeSpeed: 25,
-        backSpeed: 5,
-        startDelay: 10,
-        backDelay: 3000, // Shorter delay after the second string
-        showCursor: false,
-        fadeOut: true,
-        loop: false,
-        onComplete: function() {
-          // Respect the backDelay before restarting the first Typed.js
-          setTimeout(startFirstTyped, 3000); // Matches the backDelay
-        }
-      });
-    }
-    // Start the first sequence
-    startFirstTyped();
-  </script>
+        return new Typed("#bio-text", {
+          strings: [
+            "Hi and welcome to my virtual headquarters! I'm currently engaged on a project so revolutionary that it will enable users to dive headfirst into a simulated fight (yes, you heard right), with rules, drama, and results a quantifiable outcome. And if that does not get your juices flowing, don't fret-I've got a stash of past projects to blow your mind, entertain, and perhaps confound you. Drop by!"
+          ],
+          typeSpeed: 25,
+          backSpeed: 5,
+          startDelay: 10,
+          backDelay: 10000,
+          showCursor: false,
+          fadeOut: true,
+          loop: false,
+          onComplete: function() {
+            setTimeout(startFourthTyped, 10000);
+          }
+        });
+      }
 
-  <!-- Foreground Image -->
-  <section class="image-container" >  
-    <!-- Foreground Image -->
-    <img id="foreground-headshot-img" class="rounded-circle shadow mb-3" src="img/image_2_6_nobackground.png" alt="Headshot Image">
+      function startFourthTyped() {
+        return new Typed("#bio-text", {
+          strings: [
+            "No helmets required-just bring your curiosity and maybe a snack."
+          ],
+          typeSpeed: 25,
+          backSpeed: 5,
+          startDelay: 10,
+          backDelay: 3000,
+          showCursor: false,
+          fadeOut: true,
+          loop: false,
+          onComplete: function() {
+            setTimeout(startFirstTyped, 3000);
+          }
+        });
+      }
+
+      startFirstTyped();
+    </script>
+
+    <section class="image-container">
+      <img id="foreground-headshot-img" class="rounded-circle shadow mb-3" src="img/image_2_6_nobackground.png" alt="Headshot Image">
+    </section>
+
+    <div class="center-content">
+      <div class="wrapper">
+        <div class="marquee-text rotate-left fadeout-horizontal">
+          <div class="marquee-text-track-one">
+            <p>Software Engineer</p>
+            <p>Tampa, Florida</p>
+            <p>BS in CS - USF '23</p>
+            <p>Pro Gamer</p>
+            <p>Game Dev</p>
+            <p>PR USF Smash Ult</p>
+            <p aria-hidden="true">Software Engineer</p>
+            <p aria-hidden="true">Tampa, Florida</p>
+            <p aria-hidden="true">BS in CS - USF '23</p>
+            <p aria-hidden="true">Pro Gamer</p>
+            <p aria-hidden="true">Game Dev</p>
+            <p aria-hidden="true">PR USF Smash Ult</p>
+          </div>
+        </div>
+
+        <div class="marquee-text rotate-right fadeout-horizontal">
+          <div class="marquee-text-track-two">
+            <p>Software Engineer</p>
+            <p>Tampa, Florida</p>
+            <p>BS in CS - USF '23</p>
+            <p>Pro Gamer</p>
+            <p>Game Dev</p>
+            <p>PR USF Smash Ult</p>
+            <p aria-hidden="true">Software Engineer</p>
+            <p aria-hidden="true">Tampa, Florida</p>
+            <p aria-hidden="true">BS in CS - USF '23</p>
+            <p aria-hidden="true">Pro Gamer</p>
+            <p aria-hidden="true">Game Dev</p>
+            <p aria-hidden="true">PR USF Smash Ult</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="spacer-one" class="spacer"></div>
   </section>
 
-  <!-- Marqee -->
+  <!-- Projects section -->
+  <section id="projects-section">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-slide="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      </div>
 
-  <div class="center-content">
-    <div class="wrapper">
-      <div class="marquee-text rotate-left fadeout-horizontal ">
-        <div class="marquee-text-track-one">
-          <p>Software Engineer</p>
-          <p>Tampa, Florida</p>
-          <p>BS in CS - USF '23</p>
-          <p>Pro Gamer</p>
-          <p>Game Dev</p>
-          <p>PR USF Smash Ult</p>
-          <p aria-hidden="true">Software Engineer</p>
-          <p aria-hidden="true">Tampa, Florida</p>
-          <p aria-hidden="true">BS in CS - USF '23</p>
-          <p aria-hidden="true">Pro Gamer</p>
-          <p aria-hidden="true">Game Dev</p>
-          <p aria-hidden="true">PR USF Smash Ult</p>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <video autoplay muted loop playsinline class="d-block w-100">
+            <source src="img/Risk-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h2 class="carousel-title">Risk</h2>
+          <div id="risk-caption" class="carousel-caption d-md-block">
+            <p class="caption-text">
+              The ultimate playing card game of calculated gambles and bold decisions. Players face a thrilling dilemma each turn: select the right card and decide whether to hit or stand, balancing strategy and nerve in a game where every move could lead to triumph or disaster. Are you ready to take the Risk? In development
+            </p>
           </div>
-      </div>
-  
-      <div class="marquee-text rotate-right fadeout-horizontal">
-        <div class="marquee-text-track-two">
-          <p>Software Engineer</p>
-          <p>Tampa, Florida</p>
-          <p>BS in CS - USF '23</p>
-          <p>Pro Gamer</p>
-          <p>Game Dev</p>
-          <p>PR USF Smash Ult</p>
-          <p aria-hidden="true">Software Engineer</p>
-          <p aria-hidden="true">Tampa, Florida</p>
-          <p aria-hidden="true">BS in CS - USF '23</p>
-          <p aria-hidden="true">Pro Gamer</p>
-          <p aria-hidden="true">Game Dev</p>
-          <p aria-hidden="true">PR USF Smash Ult</p>
+          <p class="in-dev-cap">In Development</p>
+        </div>
+
+        <div class="carousel-item">
+          <video autoplay muted loop playsinline class="d-block w-100">
+            <source src="img/Squared-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h2 class="carousel-title">Squared</h2>
+          <div id="squared-caption" class="carousel-caption d-md-block">
+            <p class="caption-text">
+              Get ready to rethink Tic-Tac-Toe! Played on a vibrant 5x5 grid, Squared challenges players to drop X's and O's in a thrilling race to form the ultimate square. With each turn, the stakes rise, demanding quick thinking, sharp strategy, and a dash of cunning. Get ready for an electrifying twist on a beloved classic-victory has never been this satisfying!
+            </p>
           </div>
-      </div>
-    </div>
-  </div>
-      <div id= "spacer-one" class = "spacer"></div>
-</section>
-
-
-
-
-
-<!-- Projects section -->
-<section id="projects-section">
-  <div id="carouselExampleCaptions" class="carousel slide" data-bs-slide="false">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-        aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
-        aria-label="Slide 5"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <video autoplay muted loop playsinline class="d-block w-100">
-          <source src="img/Risk-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>        
-      <h2 class = "carousel-title">Risk</h2>
-        <div id="risk-caption" class="carousel-caption d-md-block">
-          <p class="caption-text">The ultimate playing card game of calculated gambles and bold decisions. Players face a thrilling dilemma each turn: select the right card 
-            and decide whether to hit or stand, balancing strategy and nerve in a game where every move could lead to triumph or disaster. Are you ready to take the Risk? In development</p>
+          <p class="in-dev-cap">In Development</p>
         </div>
-        <p id ="in-dev-cap">In Development</p>    
 
-      </div>
-      <div class="carousel-item">
-        <video autoplay muted loop playsinline class="d-block w-100">
-          <source src="img/Squared-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
-        <h2 class = "carousel-title">Squared</h2>
-        <div id="squared-caption"class="carousel-caption d-md-block">
-          <p class="caption-text">Get ready to rethink Tic-Tac-Toe! Played on a vibrant 5x5 grid, Squared challenges players to drop X's and O's 
-            in a thrilling race to form the ultimate square. With each turn, the stakes rise, demanding quick thinking, 
-            sharp strategy, and a dash of cunning. Get ready for an electrifying twist on a beloved classic—victory has never been this satisfying!
-          </p>
+        <div class="carousel-item">
+          <video autoplay muted loop playsinline class="d-block w-100">
+            <source src="img/Employee-216-intro-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h2 class="carousel-title">Employee 216</h2>
+          <div id="employee-216-caption" class="carousel-caption d-md-block">
+            <p class="caption-text">
+              Brace yourself for a spine-tingling ride in this thrilling short film! Watch as Employee 216, completely absorbed in their office assignment, suddenly begins to notice strange and unnerving occurrences around the office. What starts as a routine day quickly spirals into a mind-bending mystery, and the tension keeps building with every click of the mouse.
+            </p>
+          </div>
         </div>
-        <p id ="in-dev-cap">In Development</p>    
 
-      </div>
-      <div class="carousel-item">
-        <video autoplay muted loop playsinline class="d-block w-100">
-          <source src="img/Employee-216-intro-2.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
-          <h2 class = "carousel-title">Employee 216</h2>
-        <div id="employee-216-caption"class="carousel-caption d-md-block">
-          <p class="caption-text">Brace yourself for a spine-tingling ride in this thrilling short film! Watch as Employee 216, completely absorbed
-             in their office assignment, suddenly begins to notice strange and unnerving occurrences around the office. 
-             What starts as a routine day quickly spirals into a mind-bending mystery, and the tension keeps building with every click of the mouse.</p>
+        <div class="carousel-item">
+          <video autoplay muted loop playsinline class="d-block w-100">
+            <source src="img/Solitaire-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <h2 class="carousel-title">Solitaire</h2>
+          <div id="solitaire-caption" class="carousel-caption d-md-block">
+            <p class="caption-text">
+              A fresh twist on the classic card game! Experience the timeless challenge of Solitaire with a sleek, modern design and smooth gameplay. Whether you're relaxing or testing your skills, this fully functioning version lets you reset the board and dive right back into the action. Simple yet addictive, it's the perfect way to unwind, and every shuffle brings a new opportunity to strategize and win!
+            </p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="img/space.png" class="d-block w-100" alt="Space Shooter preview">
+          <h2 class="carousel-title">Space Shooter</h2>
+          <div id="space-shooter-caption" class="carousel-caption d-md-block">
+            <p class="caption-text">
+              Blast off into an exhilarating space adventure! Inspired by the classic Galaga, this space shooter brings a fresh, modern twist with stunning graphics and intense action. Face waves of enemies, dodge relentless attacks, and unleash powerful upgrades as you race to save the galaxy. Every level escalates the excitement, challenging your reflexes and strategy-are you ready to take on the challenge and become the ultimate space hero?
+            </p>
+          </div>
+          <p class="in-dev-cap">In Development</p>
         </div>
       </div>
-      <div class="carousel-item">
-        <video autoplay muted loop playsinline class="d-block w-100">
-          <source src="img/Solitaire-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
-        <h2 class = "carousel-title">Solitaire</h2>
-        <div id="solitaire-caption"class="carousel-caption d-md-block">
-          <p class="caption-text">A fresh twist on the classic card game! Experience the timeless challenge of Solitaire with a sleek, 
-            modern design and smooth gameplay. Whether you're relaxing or testing your skills, this fully functioning 
-            version lets you reset the board and dive right back into the action. Simple yet addictive, it's the perfect way 
-            to unwind, and every shuffle brings a new opportunity to strategize and win!</p>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Skills section -->
+  <section id="skills-section">
+    <div class="container">
+      <h2 id="skills-title">Skills</h2>
+      <div class="row">
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/Unity-Icon-Square.png" alt="Unity logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/c-sharp-c-icon-1822x2048-wuf3ijab.png" alt="C# logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/HTML5_logo_and_wordmark.svg.png" alt="HTML5 logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/css-icon.png" alt="CSS logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/java-icon-paper.png" alt="Java logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/c++icon.png" alt="C++ logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/bootstrap-icon.png" alt="Bootstrap logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/c_original_logo_icon_146611.png" alt="C logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/js-icon.png" alt="JavaScript logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/03-06-01-riscv-hero.svg" alt="RISC-V logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/asm-200.png" alt="ASM logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/python-icon.png" alt="Python logo">
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-2 col-sm-2 col-md-3 col-lg-2"></div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/verilog-icon.png" alt="Verilog logo">
+        </div>
+        <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
+          <img class="img-skill" src="img/premierepro-icon.png" alt="Premiere Pro logo">
         </div>
       </div>
-      <div class="carousel-item">
-        <img src="img/space.png" class="d-block w-100" alt="...">
-        <h2 class = "carousel-title">Space Shooter</h2>
-        <div id="space-shooter-caption" class="carousel-caption d-md-block">
-          <p class="caption-text">Blast off into an exhilarating space adventure! Inspired by the classic Galaga, 
-            this space shooter brings a fresh, modern twist with stunning graphics and intense 
-            action. Face waves of enemies, dodge relentless attacks, and unleash powerful upgrades as you 
-            race to save the galaxy. Every level escalates the excitement, challenging your reflexes and strategy—are 
-            you ready to take on the challenge and become the ultimate space hero?
-          </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact-section">
+    <div class="container">
+      <h2 id="contact-title">Contact</h2>
+      <div class="row">
+        <div class="skill-html col-6 col-sm-6 col-md-4">
+          <a href="https://www.linkedin.com/in/pranav-mehra-awekingsum/">
+            <img class="img-contact" src="img/linkedin-icon.png" alt="LinkedIn logo">
+          </a>
         </div>
-        <p id ="in-dev-cap">In Development</p>    
+        <div class="skill-html col-6 col-sm-6 col-md-4">
+          <a href="https://github.com/AweKingSome">
+            <img class="img-contact" src="img/github-icon.png" alt="GitHub logo">
+          </a>
+        </div>
+        <div class="skill-html col-12 col-sm-12 col-md-4">
+          <a href="mailto:pranavmehra6@gmail.com">
+            <img class="img-contact" src="img/email-icon.png" alt="Email logo">
+          </a>
+        </div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-</section>
+  </section>
 
+  <!-- Footer section -->
+  <section id="footer-section">
+    <h5 id="footer-text">© Pranav Mehra 2024</h5>
+  </section>
 
-<!-- Skills section -->
-<section id="skills-section">
-  <div class="container">
-    <h2 id="skills-title">Skills</h2>
-    <div class="row">
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/Unity-Icon-Square.png" alt="Unity logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/c-sharp-c-icon-1822x2048-wuf3ijab.png" alt="C# logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/HTML5_logo_and_wordmark.svg.png" alt="html5 logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/css-icon.png" alt="CSS logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/java-icon-paper.png" alt="Java logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/c++icon.png" alt="C++ logo">
-      </div>
-     <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/bootstrap-icon.png" alt="Bootstrap logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/c_original_logo_icon_146611.png" alt="C logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/js-icon.png" alt="Risc-V logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/03-06-01-riscv-hero.svg" alt="Risc-V logo">
-        </p>
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/asm-200.png" alt="ASM logo">
-        </p>
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/python-icon.png" alt="ASM logo">
-      </div>
-      <div class="col-lg-2">
-      </div>
-      <div class="col-2 col-sm-2 col-md-3 col-lg-2">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/verilog-icon.png" alt="Risc-V logo">
-      </div>
-      <div class="skill-html col-4 col-sm-4 col-md-3 col-lg-2">
-        <img id="img-skill" src="img/premierepro-icon.png" alt="Risc-V logo">
-      </div>      
-    </div>
-
-
-</section>
-
-<!-- Contact Section -->
-<section id="contact-section">
-  <div class="container">
-    <h2 id="contact-title">Contact</h2>
-    <div class="row">
-      <div class="skill-html col-6 col-sm-6 col-md-4">
-        <a href=" https://www.linkedin.com/in/pranav-mehra-awekingsum/"><img id="img-contact"
-            src="img/linkedin-icon.png" alt="LinkedIn logo"></a>
-      </div>
-      <div class="skill-html col-6 col-sm-6 col-md-4">
-        <a href="https://github.com/AweKingSome"><img id="img-contact" src="img/github-icon.png" alt="Github logo"></a>
-      </div>
-      <div class="skill-html col-12 col-sm-12 col-md-4">
-        <a href="mailto:pranavmehra6@gmail.com"><img id="img-contact" src="img/email-icon.png" alt="Email logo"></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer section -->
-<section id="footer-section">
-  <h5 id="footer-text">© Pranav Mehra 2024</h5>
-</section>
-
-<!-- 
-  		TODO: Paste Bootstrap JavaScript script tag from:
-  		https://getbootstrap.com/docs/5.2/getting-started/introduction/
-  	-->
-<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"
+  ></script>
 </body>
-
 </html>
