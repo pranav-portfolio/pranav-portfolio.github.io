@@ -1,333 +1,392 @@
-const spaceship = document.getElementById('spaceship');
-const gameArea = document.getElementById('game-area');
-const bestTimeElement = document.getElementById('best-time');
-const timerElement = document.getElementById('timer');
+const spaceship = document.getElementById("spaceship");
+const gameArea = document.getElementById("game-area");
+const bestTimeElement = document.getElementById("best-time");
+const timerElement = document.getElementById("timer");
 
-let positionX = window.innerWidth / 2;
-let positionY = window.innerHeight / 2;
-const speed = 1; 
-let isInvincible = false;
-let spawnRate = 1000; // Initial asteroid spawn rate
-let minSpawnRate = 300; // Minimum spawn rate based on screen size
-let spawnRateDecrement = 50; // Decrease spawn rate per iteration
-let asteroidMinSpeed = 5; // Minimum asteroid speed
-let asteroidMaxSpeed = 10; // Maximum asteroid speed
-let difficultyMultiplier = 1; // Reset during game resets
-
-let gameRunning = false; // Tracks whether the game loop is active
-
-let lastSpawn = 0; // Tracks time for asteroid spawning
-let lastMove = 0; // Throttle for mousemove events
-let asteroids = []; // Active asteroids
-let spawnPaused = false; // Flag to pause spawning
-let currentTime = 0;
-let timerInterval;
-let bestTime = localStorage.getItem('bestTime') ? parseInt(localStorage.getItem('bestTime')) : 0;
-
-// Adjust minimum spawn rate based on screen size
-function updateMinSpawnRate() {
-  if (window.innerWidth <= 400){
-    minSpawnRate = 500;
-    asteroidMinSpeed = 2;
-    asteroidMaxSpeed = 8;
-  } 
-  else if (window.innerWidth <= 500){
-    minSpawnRate = 400;
-    asteroidMinSpeed = 2;
-    asteroidMaxSpeed = 8;
-  } 
-  else if (window.innerWidth <= 600){
-    minSpawnRate = 300;
-    asteroidMinSpeed = 2;
-    asteroidMaxSpeed = 8;
-  } 
-  else if (window.innerWidth <= 800){
-    minSpawnRate = 200;
-    asteroidMinSpeed = 3;
-    asteroidMaxSpeed = 9;
-  } 
-  else if (window.innerWidth <= 1200){
-    minSpawnRate = 150;
-    asteroidMinSpeed = 5;
-    asteroidMaxSpeed = 15;
-  }
-  else{
-    minSpawnRate = 50;
-    asteroidMinSpeed = 10;
-    asteroidMaxSpeed = 20;
-  } 
-}
-updateMinSpawnRate();
-window.addEventListener('resize', updateMinSpawnRate);
-
-// Increment difficultyMultiplier during gameplay
-setInterval(() => {
-  difficultyMultiplier += 0.1; // Gradually increase speed
-}, 5000); // Every 5 seconds
-
-
-// Update spaceship position
-function updatePosition() {
-  // spaceship.style.transform = `translate(${positionX}px, ${positionY}px)`;
-  spaceship.style.left = `${positionX}px`;
-  spaceship.style.top = `${positionY}px`;
-}
-
-// Throttled mousemove handler
-document.addEventListener('mousemove', (event) => {
-  const now = Date.now();
-  if (now - lastMove > 16) { // Throttle to ~60fps
-    lastMove = now;
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-    const gameAreaRect = gameArea.getBoundingClientRect();
-    if (
-      mouseX > gameAreaRect.left &&
-      mouseX < gameAreaRect.right &&
-      mouseY > gameAreaRect.top &&
-      mouseY < gameAreaRect.bottom
-    ) {
-      positionX += (mouseX - positionX) * speed;
-      positionY += (mouseY - positionY) * speed;
-      updatePosition();
+const CAPTION_RULES = {
+  risk: [
+    {
+      max: 735,
+      text: "Calculated gambles and bold decisions-can you take the Risk?"
+    },
+    {
+      max: 1200,
+      text: "A thrilling card game of gambles and strategy. Each turn, pick the right card, hit or stand, and balance nerve with tactics. Will you take the Risk?"
+    },
+    {
+      max: Infinity,
+      text: "The ultimate playing card game of calculated gambles and bold decisions. Players face a thrilling dilemma each turn: select the right card and decide whether to hit or stand, balancing strategy and nerve in a game where every move could lead to triumph or disaster. Are you ready to take the Risk?"
     }
-  }
-});
+  ],
+  squared: [
+    {
+      max: 970,
+      text: "Squared reimagines Tic-Tac-Toe on a 5x5 grid. Race to form the ultimate square with strategy and quick thinking!"
+    },
+    {
+      max: 1390,
+      text: "Rethink Tic-Tac-Toe on a 5x5 grid! Squared challenges players to drop X's and O's, racing to form the ultimate square. Quick thinking and strategy are key in this electrifying twist on a classic game."
+    },
+    {
+      max: Infinity,
+      text: "Get ready to rethink Tic-Tac-Toe! Played on a vibrant 5x5 grid, Squared challenges players to drop X's and O's in a thrilling race to form the ultimate square. With each turn, the stakes rise, demanding quick thinking, sharp strategy, and a dash of cunning. Get ready for an electrifying twist on a beloved classic-victory has never been this satisfying!"
+    }
+  ],
+  employee216: [
+    {
+      max: 970,
+      text: "In this thrilling short film, Employee 216's normal day turns into a spine-chilling mystery, with tension rising at every click!"
+    },
+    {
+      max: 1390,
+      text: "Brace yourself for a spine-tingling short film! Employee 216, absorbed in their office work, begins noticing strange occurrences. What starts as a normal day spirals into a mind-bending mystery, with tension building at every click."
+    },
+    {
+      max: Infinity,
+      text: "Brace yourself for a spine-tingling ride in this thrilling short film! Watch as Employee 216, completely absorbed in their office assignment, suddenly begins to notice strange and unnerving occurrences around the office. What starts as a routine day quickly spirals into a mind-bending mystery, and the tension keeps building with every click of the mouse."
+    }
+  ],
+  solitaire: [
+    {
+      max: 970,
+      text: "Modern Solitaire-relax, reset, and shuffle your way to victory!"
+    },
+    {
+      max: 1390,
+      text: "Solitaire with a modern twist! Enjoy smooth gameplay, reset the board anytime, and challenge yourself with every shuffle."
+    },
+    {
+      max: Infinity,
+      text: "A fresh twist on the classic card game! Experience the timeless challenge of Solitaire with a sleek, modern design and smooth gameplay. Whether you're relaxing or testing your skills, this fully functioning version lets you reset the board and dive right back into the action. Simple yet addictive, it's the perfect way to unwind, and every shuffle brings a new opportunity to strategize and win!"
+    }
+  ],
+  spaceshooter: [
+    {
+      max: 870,
+      text: "Space shooter action-dodge, upgrade, and save the galaxy!"
+    },
+    {
+      max: 1470,
+      text: "Embark on a thrilling space adventure with a modern twist on the classic Galaga! Face waves of enemies, dodge attacks, and unleash powerful upgrades to save the galaxy."
+    },
+    {
+      max: Infinity,
+      text: "Blast off into an exhilarating space adventure! Inspired by the classic Galaga, this space shooter brings a fresh, modern twist with stunning graphics and intense action. Face waves of enemies, dodge relentless attacks, and unleash powerful upgrades as you race to save the galaxy. Every level escalates the excitement, challenging your reflexes and strategy-are you ready to take on the challenge and become the ultimate space hero?"
+    }
+  ]
+};
 
-// Function to create an asteroid
+const CAPTION_TARGETS = {
+  risk: "#risk-caption .caption-text",
+  squared: "#squared-caption .caption-text",
+  employee216: "#employee-216-caption .caption-text",
+  solitaire: "#solitaire-caption .caption-text",
+  spaceshooter: "#space-shooter-caption .caption-text"
+};
+
+const GAME_CONFIG = {
+  initialSpawnRate: 1000,
+  spawnRateDecrement: 50,
+  mouseThrottleMs: 16,
+  playerLerp: 1,
+  difficultyStep: 0.1,
+  difficultyTickMs: 5000,
+  invincibleDurationMs: 3000,
+  restartDelayMs: 3000,
+  clearTickMs: 16
+};
+
+const BREAKPOINTS = [
+  { max: 400, minSpawnRate: 500, minSpeed: 2, maxSpeed: 8 },
+  { max: 500, minSpawnRate: 400, minSpeed: 2, maxSpeed: 8 },
+  { max: 600, minSpawnRate: 300, minSpeed: 2, maxSpeed: 8 },
+  { max: 800, minSpawnRate: 200, minSpeed: 3, maxSpeed: 9 },
+  { max: 1200, minSpawnRate: 150, minSpeed: 5, maxSpeed: 15 },
+  { max: Infinity, minSpawnRate: 50, minSpeed: 10, maxSpeed: 20 }
+];
+
+const state = {
+  x: window.innerWidth / 2,
+  y: window.innerHeight / 2,
+  lastMove: 0,
+  lastSpawn: 0,
+  asteroids: [],
+  isInvincible: false,
+  spawnPaused: false,
+  gameRunning: false,
+  spawnRate: GAME_CONFIG.initialSpawnRate,
+  minSpawnRate: 300,
+  asteroidMinSpeed: 5,
+  asteroidMaxSpeed: 10,
+  difficultyMultiplier: 1,
+  currentTime: 0,
+  timerInterval: null,
+  difficultyInterval: null,
+  bestTime: Number.parseInt(localStorage.getItem("bestTime") || "0", 10)
+};
+
+function pickBreakpoint(width) {
+  return BREAKPOINTS.find((bp) => width <= bp.max);
+}
+
+function updateDifficultyByViewport() {
+  const bp = pickBreakpoint(window.innerWidth);
+  state.minSpawnRate = bp.minSpawnRate;
+  state.asteroidMinSpeed = bp.minSpeed;
+  state.asteroidMaxSpeed = bp.maxSpeed;
+}
+
+function formatTime(label, totalSeconds) {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+
+  if (h > 0) return `${label}: ${h}h ${m}m ${s}s`;
+  if (m > 0) return `${label}: ${m}m ${s}s`;
+  return `${label}: ${s}s`;
+}
+
+function updatePlayerPosition() {
+  if (!spaceship) return;
+  spaceship.style.left = `${state.x}px`;
+  spaceship.style.top = `${state.y}px`;
+}
+
+function onMouseMove(event) {
+  if (!gameArea) return;
+
+  const now = Date.now();
+  if (now - state.lastMove < GAME_CONFIG.mouseThrottleMs) return;
+  state.lastMove = now;
+
+  const rect = gameArea.getBoundingClientRect();
+  const inside =
+    event.clientX > rect.left &&
+    event.clientX < rect.right &&
+    event.clientY > rect.top &&
+    event.clientY < rect.bottom;
+
+  if (!inside) return;
+
+  state.x += (event.clientX - state.x) * GAME_CONFIG.playerLerp;
+  state.y += (event.clientY - state.y) * GAME_CONFIG.playerLerp;
+  updatePlayerPosition();
+}
+
 function createAsteroid() {
-  const asteroid = document.createElement('div');
-  asteroid.classList.add('asteroid');
+  if (!gameArea) return;
+
+  const asteroid = document.createElement("div");
+  asteroid.classList.add("asteroid");
   asteroid.style.left = `${Math.random() * gameArea.offsetWidth}px`;
-  asteroid.style.top = `-50px`;
+  asteroid.style.top = "-50px";
   gameArea.appendChild(asteroid);
 
-  const speed = Math.random() * (asteroidMaxSpeed - asteroidMinSpeed) + asteroidMinSpeed;   // Use the speed range for asteroid speed
-  let asteroidSpeed = speed * difficultyMultiplier;
-  asteroids.push({ element: asteroid, asteroidSpeed});
+  const baseSpeed =
+    Math.random() * (state.asteroidMaxSpeed - state.asteroidMinSpeed) + state.asteroidMinSpeed;
+
+  state.asteroids.push({
+    element: asteroid,
+    speed: baseSpeed * state.difficultyMultiplier
+  });
 }
 
-// Move asteroids
 function moveAsteroids() {
-  asteroids = asteroids.filter(({ element, asteroidSpeed }) => {
-    const top = parseFloat(element.style.top) + asteroidSpeed;
-    if (top > gameArea.offsetHeight) {
+  if (!gameArea) return;
+
+  state.asteroids = state.asteroids.filter(({ element, speed }) => {
+    const nextTop = Number.parseFloat(element.style.top) + speed;
+    if (nextTop > gameArea.offsetHeight) {
       element.remove();
       return false;
     }
-    element.style.top = `${top}px`;
+    element.style.top = `${nextTop}px`;
     return true;
   });
 }
 
-// Check collisions
+function createExplosion() {
+  if (!gameArea) return;
+
+  const explosion = document.createElement("div");
+  explosion.classList.add("explosion");
+  explosion.style.left = `${state.x}px`;
+  explosion.style.top = `${state.y}px`;
+  gameArea.appendChild(explosion);
+
+  setTimeout(() => explosion.remove(), 1000);
+}
+
+function handleCollision(asteroidElement) {
+  asteroidElement.remove();
+  createExplosion();
+
+  state.spawnPaused = true;
+  setTimeout(() => {
+    state.spawnPaused = false;
+  }, GAME_CONFIG.restartDelayMs);
+
+  resetGame();
+}
+
 function checkCollisions() {
-  if (isInvincible) return; // Skip collision detection if invincible
-  const spaceshipRect = spaceship.getBoundingClientRect();
-  asteroids.forEach(({ element }) => {
-    const asteroidRect = element.getBoundingClientRect();
-    if (
-      !isInvincible &&
-      spaceshipRect.left < asteroidRect.right &&
-      spaceshipRect.right > asteroidRect.left &&
-      spaceshipRect.top < asteroidRect.bottom &&
-      spaceshipRect.bottom > asteroidRect.top
-    ) {
+  if (!spaceship || state.isInvincible) return;
+
+  const shipRect = spaceship.getBoundingClientRect();
+
+  state.asteroids.forEach(({ element }) => {
+    const aRect = element.getBoundingClientRect();
+    const overlapping =
+      shipRect.left < aRect.right &&
+      shipRect.right > aRect.left &&
+      shipRect.top < aRect.bottom &&
+      shipRect.bottom > aRect.top;
+
+    if (overlapping && !state.isInvincible) {
       handleCollision(element);
     }
   });
 }
 
-// Handle collision
-function handleCollision(asteroid) {
-  asteroid.remove();
-  createExplosion();
-
-  // Pause asteroid spawning for 3 seconds
-  spawnPaused = true;
-  setTimeout(() => {
-    spawnPaused = false;
-  }, 3000);
-
-  resetGame();
-}
-
-// Create explosion effect
-function createExplosion() {
-  const explosion = document.createElement('div');
-  explosion.classList.add('explosion');
-  explosion.style.left = `${positionX}px`;
-  explosion.style.top = `${positionY}px`;
-
-  // explosion.style.transform = `translate(${positionX}px, ${positionY}px)`;
-  gameArea.appendChild(explosion);
-  setTimeout(() => explosion.remove(), 1000);
-}
-
-// Update and display timer
 function updateTimer() {
-  currentTime++;
+  if (!timerElement || !bestTimeElement) return;
 
-      // Convert currentTime to hours, minutes, and seconds
-      const hours = Math.floor(currentTime / 3600);
-      const minutes = Math.floor((currentTime % 3600) / 60);
-      const seconds = currentTime % 60;
-  
-      // Format the timer display
-      const timeString = hours > 0
-        ? `Time: ${hours}h ${minutes}m ${seconds}s`
-        : minutes > 0
-        ? `Time: ${minutes}m ${seconds}s`
-        : `Time: ${seconds}s`;
-  
-  timerElement.textContent = timeString;
-  if (currentTime > bestTime) {
-    bestTime = currentTime;
-    localStorage.setItem('bestTime', bestTime);
+  state.currentTime += 1;
+  timerElement.textContent = formatTime("Time", state.currentTime);
+
+  if (state.currentTime > state.bestTime) {
+    state.bestTime = state.currentTime;
+    localStorage.setItem("bestTime", String(state.bestTime));
   }
-    // Convert bestTime to hours, minutes, and seconds
-    const hoursBest = Math.floor(bestTime / 3600);
-    const minutesBest = Math.floor((bestTime % 3600) / 60);
-    const secondsBest = bestTime % 60;
-  
-    // Format the best time display
-    const bestTimeString = hoursBest > 0
-      ? `Best Time: ${hoursBest}h ${minutesBest}m ${secondsBest}s`
-      : minutesBest > 0
-      ? `Best Time: ${minutesBest}m ${secondsBest}s`
-      : `Best Time: ${secondsBest}s`;
-  
-  bestTimeElement.textContent = bestTimeString;
+
+  bestTimeElement.textContent = formatTime("Best Time", state.bestTime);
 }
 
-// Reset game state
-function resetGame() {
-  clearInterval(timerInterval);
-  gameRunning = false;
+function startTimer() {
+  clearInterval(state.timerInterval);
+  state.currentTime = 0;
+  state.timerInterval = setInterval(updateTimer, 1000);
+}
 
-  // Temporarily disable collisions and spawning
-  isInvincible = true;
-  spawnPaused = true;
-
-  // Continue moving asteroids off-screen
-  const moveAsteroidsUntilClear = setInterval(() => {
-    moveAsteroids();
-    if (asteroids.length === 0) {
-      clearInterval(moveAsteroidsUntilClear); // Stop once all asteroids are cleared
+function startDifficultyTicker() {
+  clearInterval(state.difficultyInterval);
+  state.difficultyInterval = setInterval(() => {
+    if (state.gameRunning) {
+      state.difficultyMultiplier += GAME_CONFIG.difficultyStep;
     }
-  }, 16); // Move at ~60fps
-
-
-  currentTime = 0;
-  spaceship.style.display = 'none';
-  spawnRate = 1000;
-  difficultyMultiplier = 1; // Reset the difficulty multiplier
-  
-  setTimeout(() => {
-    isInvincible = true;
-    spaceship.style.display = 'block';
-    spaceship.classList.add('invincible');
-    // End invincibility after 3 seconds
-    setTimeout(() => {
-      isInvincible = false;
-      spaceship.classList.remove('invincible');
-    }, 3000);
-    startGame();
-  }, 3000);
+  }, GAME_CONFIG.difficultyTickMs);
 }
 
-// Game loop
+function clearRuntimeIntervals() {
+  clearInterval(state.timerInterval);
+}
+
+function resetGame() {
+  clearRuntimeIntervals();
+  state.gameRunning = false;
+  state.isInvincible = true;
+  state.spawnPaused = true;
+  state.currentTime = 0;
+  state.spawnRate = GAME_CONFIG.initialSpawnRate;
+  state.difficultyMultiplier = 1;
+
+  if (spaceship) spaceship.style.display = "none";
+
+  const clearLoop = setInterval(() => {
+    moveAsteroids();
+    if (state.asteroids.length === 0) clearInterval(clearLoop);
+  }, GAME_CONFIG.clearTickMs);
+
+  setTimeout(() => {
+    if (spaceship) {
+      spaceship.style.display = "block";
+      spaceship.classList.add("invincible");
+    }
+
+    setTimeout(() => {
+      state.isInvincible = false;
+      if (spaceship) spaceship.classList.remove("invincible");
+    }, GAME_CONFIG.invincibleDurationMs);
+
+    startGame();
+  }, GAME_CONFIG.restartDelayMs);
+}
+
 function gameLoop(timestamp) {
-  if (!gameRunning) return; // Stop the loop if the game isn't running
-  // Only spawn asteroids if spawning is not paused
-  if (!spawnPaused && timestamp - lastSpawn > spawnRate) {
+  if (!state.gameRunning) return;
+
+  if (!state.spawnPaused && timestamp - state.lastSpawn > state.spawnRate) {
     createAsteroid();
-    lastSpawn = timestamp;
-    if (spawnRate > minSpawnRate) spawnRate -= spawnRateDecrement;
+    state.lastSpawn = timestamp;
+    if (state.spawnRate > state.minSpawnRate) {
+      state.spawnRate -= GAME_CONFIG.spawnRateDecrement;
+    }
   }
+
   moveAsteroids();
   checkCollisions();
   requestAnimationFrame(gameLoop);
 }
 
-
-// Start the timer
-function startTimer() {
-  currentTime = 0;
-  timerInterval = setInterval(updateTimer, 1000);
-}
-
-// Start the game
 function startGame() {
-  gameRunning = true;
-
+  state.gameRunning = true;
   startTimer();
   requestAnimationFrame(gameLoop);
 }
 
-// Initialize position and start the game
-document.addEventListener('DOMContentLoaded', () => {
-  updatePosition();
+function textForWidth(rules, width) {
+  return rules.find((rule) => width <= rule.max).text;
+}
+
+function updateCaptions() {
+  const width = window.innerWidth;
+
+  Object.keys(CAPTION_TARGETS).forEach((key) => {
+    const target = document.querySelector(CAPTION_TARGETS[key]);
+    if (!target) return;
+    target.textContent = textForWidth(CAPTION_RULES[key], width);
+  });
+}
+
+function setupMarqueeTracks() {
+  const tracks = document.querySelectorAll(".marquee-text-track-one, .marquee-text-track-two");
+  tracks.forEach((track) => {
+    const distance = track.scrollWidth / 2;
+    track.style.setProperty("--marquee-distance", `${distance}px`);
+  });
+}
+
+function setupResize() {
+  let marqueeTimer = null;
+  let captionTimer = null;
+
+  window.addEventListener("resize", () => {
+    updateDifficultyByViewport();
+
+    clearTimeout(marqueeTimer);
+    marqueeTimer = setTimeout(setupMarqueeTracks, 120);
+
+    clearTimeout(captionTimer);
+    captionTimer = setTimeout(updateCaptions, 50);
+  });
+}
+
+function init() {
+  if (!spaceship || !gameArea || !bestTimeElement || !timerElement) return;
+
+  updateDifficultyByViewport();
+  updatePlayerPosition();
+  updateCaptions();
+  setupMarqueeTracks();
+  startDifficultyTicker();
   startGame();
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-  const riskCaption = document.querySelector("#risk-caption .caption-text");
-  const squaredCaption = document.querySelector("#squared-caption .caption-text");
-  const employee216Caption = document.querySelector("#employee-216-caption .caption-text");
-  const solitaireCaption = document.querySelector("#solitaire-caption .caption-text");
-  const spaceshooterCaption = document.querySelector("#space-shooter-caption .caption-text");
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(setupMarqueeTracks);
+  }
 
-  const updateCaptionText = () => {
-    const screenWidth = window.innerWidth;
+  setupResize();
+  document.addEventListener("mousemove", onMouseMove);
+}
 
-    if (screenWidth <= 735) {
-      riskCaption.textContent = "Calculated gambles and bold decisions—can you take the Risk?";
-    } else if (screenWidth <= 1200) {
-      riskCaption.textContent = "A thrilling card game of gambles and strategy. Each turn, pick the right card, hit or stand, and balance nerve with tactics. Will you take the Risk?";
-    } else {
-      riskCaption.textContent =
-        "The ultimate playing card game of calculated gambles and bold decisions. Players face a thrilling dilemma each turn: select the right card and decide whether to hit or stand, balancing strategy and nerve in a game where every move could lead to triumph or disaster. Are you ready to take the Risk?";
-    }
-    if (screenWidth <= 970) {
-      squaredCaption.textContent = "Squared reimagines Tic-Tac-Toe on a 5x5 grid. Race to form the ultimate square with strategy and quick thinking!";
-    } else if (screenWidth <= 1390) {
-      squaredCaption.textContent = "Rethink Tic-Tac-Toe on a 5x5 grid! Squared challenges players to drop X's and O's, racing to form the ultimate square. Quick thinking and strategy are key in this electrifying twist on a classic game.";
-    } else {
-      squaredCaption.textContent =
-      "Get ready to rethink Tic-Tac-Toe! Played on a vibrant 5x5 grid, Squared challenges players to drop X's and O's in a thrilling race to form the ultimate square. With each turn, the stakes rise, demanding quick thinking, sharp strategy, and a dash of cunning. Get ready for an electrifying twist on a beloved classic—victory has never been this satisfying!";
-    }
-
-    if (screenWidth <= 970) {
-      employee216Caption.textContent = "In this thrilling short film, Employee 216’s normal day turns into a spine-chilling mystery, with tension rising at every click!";
-    } else if (screenWidth <= 1390) {
-      employee216Caption.textContent =  "Brace yourself for a spine-tingling short film! Employee 216, absorbed in their office work, begins noticing strange occurrences. What starts as a normal day spirals into a mind-bending mystery, with tension building at every click.";
-    } else {
-      employee216Caption.textContent = "Brace yourself for a spine-tingling ride in this thrilling short film! Watch as Employee 216, completely absorbed in their office assignment, suddenly begins to notice strange and unnerving occurrences around the office. What starts as a routine day quickly spirals into a mind-bending mystery, and the tension keeps building with every click of the mouse.";
-    }
-
-    if (screenWidth <= 970) {
-      solitaireCaption.textContent = "Modern Solitaire—relax, reset, and shuffle your way to victory!";
-    } else if (screenWidth <= 1390) {
-      solitaireCaption.textContent =  "Solitaire with a modern twist! Enjoy smooth gameplay, reset the board anytime, and challenge yourself with every shuffle.";
-    } else {
-      solitaireCaption.textContent = "A fresh twist on the classic card game! Experience the timeless challenge of Solitaire with a sleek, modern design and smooth gameplay. Whether you're relaxing or testing your skills, this fully functioning version lets you reset the board and dive right back into the action. Simple yet addictive, it's the perfect way to unwind, and every shuffle brings a new opportunity to strategize and win!";
-    }
-
-    if (screenWidth <= 870) {
-      spaceshooterCaption.textContent = "Space shooter action—dodge, upgrade, and save the galaxy!";
-    } else if (screenWidth <= 1470) {
-      spaceshooterCaption.textContent =  "Embark on a thrilling space adventure with a modern twist on the classic Galaga! Face waves of enemies, dodge attacks, and unleash powerful upgrades to save the galaxy.";
-    } else {
-      spaceshooterCaption.textContent = "Blast off into an exhilarating space adventure! Inspired by the classic Galaga, this space shooter brings a fresh, modern twist with stunning graphics and intense action. Face waves of enemies, dodge relentless attacks, and unleash powerful upgrades as you race to save the galaxy. Every level escalates the excitement, challenging your reflexes and strategy—are you ready to take on the challenge and become the ultimate space hero?";
-    }
-
-  };
-
-  // Update caption text on page load and window resize
-  updateCaptionText();
-  window.addEventListener("resize", updateCaptionText);
-});
-
-
-
+document.addEventListener("DOMContentLoaded", init);
